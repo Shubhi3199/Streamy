@@ -1,5 +1,5 @@
 import streams from "../apis/streams";
-import { SIGN_IN, SIGN_OUT} from "./types";
+import { SIGN_IN, SIGN_OUT, CREATE_STREAM} from "./types";
 
 export const signIn=(userId)=>{                  //actionCreator()
     return{
@@ -14,7 +14,10 @@ export const signOut=()=>{                       //actionCreator()
 };
 export const createStream=(formValues)=>{        //actionCreator()
     return async ( dispatch)=>{
-        streams.post('/streams', formValues)
-    };
+       const response=await streams.post('/streams', formValues)  //creating a handle for the newly created stream
+                                                                  //so that we can handle the action dispatched.
+    dispatch({type:CREATE_STREAM, payload: response.data});       //dispatching the action object with the payload
+    };                                                           //recived from axios response.
+
 };
 
