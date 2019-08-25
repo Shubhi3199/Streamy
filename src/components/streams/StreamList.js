@@ -9,8 +9,8 @@ class StreamList extends React.Component{
     renderList(){
         return this.props.streams.map(stream=>{
            return(
-               <div className={`item`} key={stream.id}>
-                   <i className={`large middle aligned icon camera retro icon`} />
+               <div className={`item `} key={stream.id}>
+                   <i className={`large middle aligned red icon camera retro icon`} />
                    <div className={`content`}>
                        {stream.title}
                        <div className={`description`}>
