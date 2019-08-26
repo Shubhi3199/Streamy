@@ -20,9 +20,11 @@ export const signOut=()=>{                       //actionCreator()
         type:SIGN_OUT
     }
 };
+
 export const createStream=(formValues)=>{        //actionCreator()
-    return async ( dispatch)=>{
-       const response=await streams.post('/streams', formValues); //creating a handle for the newly created stream
+    return async ( dispatch, getState)=>{
+        const {userId}=getState().auth;
+       const response=await streams.post('/streams', {...formValues, userId}); //creating a handle for the newly created stream
                                                                   //so that we can handle the action dispatched.
     dispatch({type:CREATE_STREAM, payload: response.data});       //dispatching the action object with the payload
     };                                                           //recived from axios response.
