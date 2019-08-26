@@ -1,4 +1,5 @@
 import streams from "../apis/streams";
+import history from "../history";
 import {
     SIGN_IN,
     SIGN_OUT,
@@ -26,9 +27,9 @@ export const createStream=(formValues)=>{        //actionCreator()
         const {userId}=getState().auth;
        const response=await streams.post('/streams', {...formValues, userId}); //creating a handle for the newly created stream
                                                                   //so that we can handle the action dispatched.
-    dispatch({type:CREATE_STREAM, payload: response.data});       //dispatching the action object with the payload
+    dispatch({type:CREATE_STREAM, payload: response.data});
+     history.push('/');                                                            //dispatching the action object with the payload
     };                                                           //recived from axios response.
-
 };
 export const fetchStreams=()=> async dispatch=>{
     const response=await streams.get('/streams');

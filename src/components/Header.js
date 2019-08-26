@@ -1,5 +1,7 @@
 import React from 'react';
-import  { BrowserRouter, Link }  from "react-router-dom";
+import  { BrowserRouter, Link }  from "react-router-dom";  //instead of using BrowserRouter we here use a plain Router as we
+                                                    //are maintaining a custom history object and so there is no need of
+                                                    //the ReactBrowser to create the history object.
 import GoogleAuth from "./GoogleAuth";
 
 const Header=()=>{
